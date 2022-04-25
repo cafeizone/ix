@@ -1,0 +1,1170 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- Meta Tag -->
+    <meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="copyright" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Title Tag  -->
+    <title>
+	iXclusive
+</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/TitleLogo.PNG" />
+    <!-- Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet" />
+
+    <!-- StyleSheet -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <!-- Fancybox -->
+    
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="css/themify-icons.css" />
+    <!-- Jquery Ui -->
+    
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/niceselect.css" />
+    <!-- Animate CSS -->
+    
+    <!-- Flex Slider CSS -->
+    
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="css/owl-carousel.css" />
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="css/slicknav.min.css" />
+
+    <!-- Eshop StyleSheet -->
+    <link rel="stylesheet" href="css/reset.css" /><link rel="stylesheet" href="style_Red.css" /><link rel="stylesheet" href="css/responsive_R1.css" />
+    <link href="1CheckBox.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function myFunction() {
+            var checkBox = document.getElementById("option1");
+            var divimg = document.getElementById("divimg");
+            if (checkBox.checked == true) {
+                //divimg.style.display = "block";
+                //var x = document.getElementById(checkBox.id.replace("option", "lbl")).innerHTML;
+                //alert(x);
+            } else {
+
+            }
+        }
+        function SelectDevice() {
+            var id = "rdev";
+            for (var i = 1; i <= 4; i++) {
+                var radio = document.getElementById(id + i.toString());
+                if (radio.checked == true) {
+                    var x = document.getElementById(radio.id.replace("rdev", "lblrdev")).innerHTML;
+                    var div = document.getElementById("div" + x);
+                    var divType = document.getElementById("divType");
+                    var divRepair = document.getElementById("divRepair");
+                    var img = document.getElementById("img" + x);
+                    div.style.display = "block";
+                    divType.style.display = "none";
+                    divRepair.style.display = "none";
+                    img.style.display = "block";
+                }
+                else {
+                    var x = document.getElementById(radio.id.replace("rdev", "lblrdev")).innerHTML;
+                    var div = document.getElementById("div" + x);
+                    div.style.display = "none";
+                    var img = document.getElementById("img" + x);
+                    img.style.display = "none";
+                }
+            }
+            var img = document.getElementById("imgDevices");
+            img.style.display = "none";
+        }
+
+        function SelectPhone() {
+            var id = "rdev";
+            var divRepair = document.getElementById("divRepair");
+            for (var i = 1; i <= 4; i++) {
+                var radio = document.getElementById(id + i.toString());
+                var x = document.getElementById(radio.id.replace("rdev", "lblrdev")).innerHTML;
+                var div = document.getElementById("div" + x);
+
+                var divType = document.getElementById("divType");
+
+                div.style.display = "none";
+                divType.style.display = "none";
+            }
+            divRepair.style.display = "block";
+        }
+
+        function SetFinal() {
+            var id = "rdev";
+            var divRepair = document.getElementById("divRepair");
+            var divFinal = document.getElementById("divFinal");
+            var lblrdFinal = document.getElementById("lblrdFinal");
+            var hdnDevice = document.getElementById("subcontent_hdnDevice");
+            var hdnIssues = document.getElementById("subcontent_hdnIssues");
+
+            var Type = "";
+            for (var i = 1; i <= 4; i++) {
+                var radio = document.getElementById(id + i.toString());
+                var x = document.getElementById(radio.id.replace("rdev", "lblrdev")).innerHTML;
+                var div = document.getElementById("div" + x);
+                if (radio.checked == true) {
+                    Type = x;
+
+                }
+                var divType = document.getElementById("divType");
+
+                div.style.display = "none";
+                divType.style.display = "none";
+            }
+            var Count = 0;
+            if (x == "iPhone") {
+                Count = 16;
+            }
+            if (x == "iWatch") {
+                Count = 5;
+            }
+            if (x == "iPad") {
+                Count = 4;
+            }
+            if (x == "MacBook") {
+                Count = 4;
+            }
+            for (var i = 1; i <= Count; i++) {
+                var radio = document.getElementById("rd" + Type + i.toString());
+                if (radio.checked == true) {
+                    var labelText = document.getElementById("lbl" + radio.id).innerHTML;
+                    lblrdFinal.innerHTML = labelText;
+                    document.getElementById("subcontent_hdnDevice").value = labelText;
+                }
+
+            }
+            var CountRepair = 0;
+            var labelTextRepair = ""
+            for (var i = 1; i <= 15; i++) {
+                var radio = document.getElementById("rdRepair" + i.toString());
+                if (radio.checked == true) {
+                    CountRepair = CountRepair + 1;
+                    labelTextRepair = labelTextRepair + CountRepair + ". " + document.getElementById("lbl" + radio.id).innerHTML + ";";
+
+                }
+
+            }
+            lblrdFinal.innerHTML = labelText + " with (" + CountRepair + ") issues selected.";
+            document.getElementById("subcontent_hdnIssues").value = labelTextRepair;
+            divRepair.style.display = "none";
+            divFinal.style.display = "block";
+
+        }
+
+        function Confirm() {
+            //var Issues = document.getElementById("subcontent_hdnIssues").value;
+            //Issues = Issues.replace("&amp;", "&");
+            //Issues = Issues.replace(";", ".\r%20");
+            //var imgbtn = document.getElementById("imgbtn");
+
+            //\r%20
+            //imgbtn.href = "https://wa.me/+919999193931/?text=" + Issues;
+            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('"+ Issues + "')", true);
+            //Response.Redirect("https://wa.me/+919999193931/?text=" + Issues);
+            //imgbtn_Click(null, null);
+
+            document.getElementById("subcontent_btnsendMsg").click();
+        }
+        function ChangeChoice() {
+            //var id = "rdev";
+            //var divRepair = document.getElementById("divRepair");
+            //var divType = document.getElementById("divType");
+            //var imgDev = document.getElementById("imgDevices");
+            //var divFinal = document.getElementById("divFinal");
+
+            //for (var i = 1; i <= 4; i++) {
+            //    var radio = document.getElementById(id + i.toString());
+            //    var x = document.getElementById(radio.id.replace("rdev", "lblrdev")).innerHTML;
+            //    var div = document.getElementById("div" + x);
+            //    var img = document.getElementById("img" + x);
+
+            //    img.style.display = "none";
+            //    div.style.display = "none";
+
+            //}
+
+            //divRepair.style.display = "none";
+            //divType.style.display = "block";
+            //imgDev.style.display = "block";
+            //divFinal.style.display = "none";
+
+            location.reload();
+        }
+
+
+
+    </script>
+</head>
+<body class="js">
+
+    <!-- Preloader -->
+    
+    <!-- End Preloader -->
+    <!-- Header -->
+    <header class="header shop">
+
+        <div class="middle-inner">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <!-- Logo -->
+
+                        <div class="logo">
+                            <a href="Home.aspx">
+                                <img src="images/whitelogo.PNG" alt="logo"></a>
+                        </div>
+                        <!--/ End Logo -->
+                        <!-- Search Form -->
+                        
+                        <!--/ End Search Form -->
+                        <div class="mobile-nav"></div>
+                    </div>
+                    <div class="col-lg-8 col-md-7 col-12">
+                        
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-12">
+                        <div class="right-bar">
+                            <!-- Search Form -->
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="cat-nav-head">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="menu-area">
+                                <!-- Main Menu -->
+                                <nav class="navbar navbar-expand-lg">
+                                    <div class="navbar-collapse">
+                                        <div class="nav-inner">
+                                            <ul class="nav main-menu menu navbar-nav">
+                                                <li><a href="home.aspx">Home</a></li>
+                                                
+                                                <li><a href="Advantages.aspx">i'Xclusive Advantages</a></li>
+                                                
+
+                                                <li><a href="Accessories.aspx">Accessories</a></li>
+                                                <li><a href="contact.aspx">Contact Us</a></li>
+                                                <li><a href="PaymentOptions.aspx">Payment</a></li>
+                                                <li><a href="PaidDeliveries.aspx">Delivery</a></li>
+                                                <li><a href="RepairMobiles.aspx">Repair</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <!--/ End Main Menu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!--/ End Header -->
+    <!-- Product Style -->
+
+    <!-- End Small Banner -->
+
+
+    
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bread-inner">
+                        <ul class="bread-list">
+                            <li><a href="Home.aspx">Home<i class="ti-arrow-right"></i></a></li>
+                            <li class="active"><a href="RepairMobiles.aspx">Repair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form method="post" action="./RepairMobiles" id="ctl00">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEwOTQwNTY3NzBkZBnaXaChASFE/Xt9/K/bO27v4aAmjcYdmo6ZEpRjLeR9" />
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F990B675" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAQJPDDhbvDWESnpCzzPEwkx0VckhfHm44JVfR9tJeYXr75rP73dXH5kLBJbpzILfpCRRQMlHjZs9icHpOfFkpY7BfcIh6Sn8Ps27Yto7amm+klUottke+w3cpiFX/az9L8=" />
+</div>
+            <input type="hidden" name="ctl00$subcontent$hdnDevice" id="subcontent_hdnDevice" />
+            <input type="hidden" name="ctl00$subcontent$hdnIssues" id="subcontent_hdnIssues" />
+            <div style="display: none">
+                <input type="submit" name="ctl00$subcontent$btnsendMsg" value="" id="subcontent_btnsendMsg" />
+                
+                
+                
+            </div>
+        </form>
+    </div>
+
+    <section class="product-area shop-sidebar shop section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+                    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <img src="images/iPHone_12_Pro.jpeg" id="imgiPhone" style="margin-top: 10%; display: none" alt="#" />
+                <img src="images/AppleDevices.jpg" id="imgDevices" style="margin-top: 10%;" alt="#" />
+                <img src="images/apple_ipad.jpg" id="imgiPad" style="margin-top: 10%; display: none" alt="#" />
+                <img src="images/apple-iwatch.jpg" id="imgiWatch" style="margin-top: 10%; display: none" alt="#" />
+                <img src="images/MacBook.jpg" id="imgMacBook" style="margin-top: 10%; display: none" alt="#" />
+            </div>
+            <br />
+            <div class="col-lg-6 col-12" id="divType">
+                <br />
+                <h2 style="color: #f40b0b;">Select your device to get started now!</h2>
+                <br />
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdev1" name="radio" type="radio" />
+                            <label for="rdev1" style="color: white;" id="lblrdev1">iPhone</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdev2" name="radio" type="radio" />
+                            <label for="rdev2" style="color: white;" id="lblrdev2">iWatch</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdev3" name="radio" type="radio" />
+                            <label for="rdev3" style="color: white;" id="lblrdev3">iPad</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdev4" name="radio" type="radio" />
+                            <label for="rdev4" style="color: white;" id="lblrdev4">MacBook</label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn " id="btn" onclick="SelectDevice();">Confirm & Proceed</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    
+                </div>
+            </div>
+            <br />
+
+            <div class="col-lg-6 col-12" id="diviWatch" style="display: none">
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6" style="margin-top: 2%">
+                        <b>
+                            <label style="color: Black;">Change selection</label></b>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn" onclick="ChangeChoice();">Change</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <br />
+                <h2 style="color: #f40b0b; margin-top: 5%">Please select your iWatch Model to continue</h2>
+                <br />
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiWatch1" name="radioWatch" type="radio" />
+                            <label for="rdiWatch1" style="color: white;" id="lblrdiWatch1">Apple Watch Series 5</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiWatch2" name="radioWatch" type="radio" />
+                            <label for="rdiWatch2" style="color: white;" id="lblrdiWatch2">Apple Watch Series 4</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiWatch3" name="radioWatch" type="radio" />
+                            <label for="rdiWatch3" style="color: white;" id="lblrdiWatch3">Apple Watch Series 3</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiWatch4" name="radioWatch" type="radio" />
+                            <label for="rdiWatch4" style="color: white;" id="lblrdiWatch4">Apple Watch Series 2</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiWatch5" name="radioWatch" type="radio" />
+                            <label for="rdiWatch5" style="color: white;" id="lblrdiWatch5">Apple Watch Series 1</label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn " onclick="SelectPhone();">Confirm & Proceed</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+
+                    
+                </div>
+            </div>
+            <br />
+            <div class="col-lg-6 col-12" id="diviPad" style="display: none">
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6" style="margin-top: 2%">
+                        <b>
+                            <label style="color: Black;">Change selection</label></b>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn" onclick="ChangeChoice();">Change</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <br />
+                <h2 style="color: #f40b0b; margin-top: 5%">Please select your iPad Model to continue</h2>
+                <br />
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPad1" name="radioPad" type="radio" />
+                            <label for="rdiPad1" style="color: white;" id="lblrdiPad1">iPad</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPad2" name="radioPad" type="radio" />
+                            <label for="rdiPad2" style="color: white;" id="lblrdiPad2">iPad Air</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPad3" name="radioPad" type="radio" />
+                            <label for="rdiPad3" style="color: white;" id="lblrdiPad3">iPad Mini</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPad4" name="radioPad" type="radio" />
+                            <label for="rdiPad4" style="color: white;" id="lblrdiPad4">iPad Pro</label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn " onclick="SelectPhone();">Confirm & Proceed</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                    
+                </div>
+            </div>
+
+            <br />
+
+            <div class="col-lg-6 col-12" id="divMacBook" style="display: none">
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6" style="margin-top: 2%">
+                        <b>
+                            <label style="color: Black;">Change selection</label></b>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn" onclick="ChangeChoice();">Change</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <br />
+                <h2 style="color: #f40b0b; margin-top: 5%">Please select your MacBook Model to continue</h2>
+                <br />
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdMacBook1" name="radioMac" type="radio" />
+                            <label for="rdMacBook1" style="color: white;" id="lblrdMacBook1">MacBook</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdMacBook2" name="radioMac" type="radio" />
+                            <label for="rdMacBook2" style="color: white;" id="lblrdMacBook2">MacBook Pro Retina</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdMacBook3" name="radioMac" type="radio" />
+                            <label for="rdMacBook3" style="color: white;" id="lblrdMacBook3">MacBook Pro</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdMacBook4" name="radioMac" type="radio" />
+                            <label for="rdMacBook4" style="color: white;" id="lblrdMacBook4">MacBook Air</label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn " onclick="SelectPhone();">Confirm & Proceed</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                    
+                </div>
+            </div>
+
+            <br />
+
+            <div class="col-lg-6 col-12" id="diviPhone" style="display: none">
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6" style="margin-top: 2%">
+                        <b>
+                            <label style="color: Black;">Change selection</label></b>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn" onclick="ChangeChoice();">Change</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <br />
+                <h2 style="color: #f40b0b; margin-top: 5%">Please select your iPhone Model to continue</h2>
+                <br />
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone1" name="radioPhone" type="radio" />
+                            <label for="rdiPhone1" style="color: white;" id="lblrdiPhone1">iPhone 11 Pro Max</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone2" name="radioPhone" type="radio" />
+                            <label for="rdiPhone2" style="color: white;" id="lblrdiPhone2">iPhone 11 Pro</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone3" name="radioPhone" type="radio" />
+                            <label for="rdiPhone3" style="color: white;" id="lblrdiPhone3">iPhone 11</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone4" name="radioPhone" type="radio" />
+                            <label for="rdiPhone4" style="color: white;" id="lblrdiPhone4">iPhone XS Max</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone5" name="radioPhone" type="radio" />
+                            <label for="rdiPhone5" style="color: white;" id="lblrdiPhone5">iPhone XS</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone6" name="radioPhone" type="radio" />
+                            <label for="rdiPhone6" style="color: white;" id="lblrdiPhone6">iPhone XR</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone7" name="radioPhone" type="radio" />
+                            <label for="rdiPhone7" style="color: white;" id="lblrdiPhone7">iPhone X</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone8" name="radioPhone" type="radio" />
+                            <label for="rdiPhone8" style="color: white;" id="lblrdiPhone8">iPhone 8 Plus</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone9" name="radioPhone" type="radio" />
+                            <label for="rdiPhone9" style="color: white;" id="lblrdiPhone9">iPhone 8</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone10" name="radioPhone" type="radio" />
+                            <label for="rdiPhone10" style="color: white;" id="lblrdiPhone10">iPhone 7 Plus</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone11" name="radioPhone" type="radio" />
+                            <label for="rdiPhone11" style="color: white;" id="lblrdiPhone11">iPhone 7</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone12" name="radioPhone" type="radio" />
+                            <label for="option12" style="color: white;" id="lblrdiPhone12">iPhone 6s Plus</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone13" name="radioPhone" type="radio" />
+                            <label for="rdiPhone13" style="color: white;" id="lblrdiPhone13">iPhone 6s</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone14" name="radioPhone" type="radio" />
+                            <label for="rdiPhone14" style="color: white;" id="lblrdiPhone14">iPhone 6 Plus</label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone15" name="radioPhone" type="radio" />
+                            <label for="rdiPhone15" style="color: white;" id="lblrdiPhone15">iPhone SE</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="inputGroup">
+                            <input id="rdiPhone16" name="radioPhone" type="radio" />
+                            <label for="option16" style="color: white;" id="lblrdiPhone16">iPhone 6</label>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn " onclick="SelectPhone();">Confirm & Proceed</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                    
+                </div>
+            </div>
+
+            <br />
+
+            <div class="col-lg-6 col-12" id="divRepair" style="display: none">
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6" style="margin-top: 2%">
+                        <b>
+                            <label style="color: Black;">Change selection</label></b>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn" onclick="ChangeChoice();">Change</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <br />
+                <h2 style="color: #f40b0b;">Select your issue with your </h2>
+                <br />
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair1" type="checkbox" />
+                            <label for="rdRepair1" style="color: white;" id="lblrdRepair1">Screen|Display Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair2" type="checkbox" />
+                            <label for="rdRepair2" style="color: white;" id="lblrdRepair2">Back Glass Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair3" type="checkbox" />
+                            <label for="rdRepair3" style="color: white;" id="lblrdRepair3">Battery Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair4" type="checkbox" />
+                            <label for="rdRepair4" style="color: white;" id="lblrdRepair4">Charging Flex|Strip Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair5" type="checkbox" />
+                            <label for="rdRepair5" style="color: white;" id="lblrdRepair5">Speaker|Ringer Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair6" type="checkbox" />
+                            <label for="rdRepair6" style="color: white;" id="lblrdRepair6">Mic Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair7" type="checkbox" />
+                            <label for="rdRepair7" style="color: white;" id="lblrdRepair7">Ear Speaker Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair8" type="checkbox" />
+                            <label for="rdRepair8" style="color: white;" id="lblrdRepair8">Front Camera Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair9" type="checkbox" />
+                            <label for="rdRepair9" style="color: white;" id="lblrdRepair9">Rear Camera Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair10" type="checkbox" />
+                            <label for="rdRepair10" style="color: white;" id="lblrdRepair10">Light & Motion Sensor Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair11" type="checkbox" />
+                            <label for="rdRepair11" style="color: white;" id="lblrdRepair11">Headphone Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair12" type="checkbox" />
+                            <label for="rdRepair12" style="color: white;" id="lblrdRepair12">Power Button Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair13" type="checkbox" />
+                            <label for="rdRepair13" style="color: white;" id="lblrdRepair13">Volume Button Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair14" type="checkbox" />
+                            <label for="rdRepair14" style="color: white;" id="lblrdRepair14">Frame & Housing Repair & Replacement</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdRepair15" type="checkbox" />
+                            <label for="rdRepair15" style="color: white;" id="lblrdRepair15">Other Problems - We will Contact you to find out more</label>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn " onclick="SetFinal();">Confirm & Proceed</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                    
+                </div>
+            </div>
+
+            <br />
+            <div class="col-lg-6 col-12" id="divFinal" style="display: none">
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6" style="margin-top: 2%">
+                        <b>
+                            <label style="color: Black;">Change selection</label></b>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn" onclick="ChangeChoice();">Change</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                </div>
+                <br />
+                <h2 style="color: #f40b0b; margin-top: 5%">Select device and issues</h2>
+                <br />
+                <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <div class="inputGroup">
+                            <input id="rdFinal" name="radioFinal" disabled type="radio" checked />
+                            <label for="rdFinal" style="color: white;" id="lblrdFinal"></label>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-4 col-3">
+                    </div>
+                    <div class="col-lg-4 col-6">
+                        <button type="submit" class="btn " onclick="Confirm();">Confirm</button>
+                    </div>
+                    <div class="col-lg-4 col-3">
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Product Style 1  -->
+    <section class="shop-services section home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-rocket"></i>
+                        <h4 >Paid Deliveries</h4>
+                        <p>As per courier services</p>
+                        <p><u><a onclick="ShowPopup();">Read More..</a></u></p>
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-reload"></i>
+                        <h4>EMI Options</h4>
+                        <p>On credit cards payments</p>
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-lock"></i>
+                        <h4>Sucure Payment</h4>
+                        <p>100% secure payment</p>
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Start Single Service -->
+                    <div class="single-service">
+                        <i class="ti-tag"></i>
+                        <h4>Best Price</h4>
+                        <p>Guaranteed price</p>
+                    </div>
+                    <!-- End Single Service -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="DeliveryModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="quickview-content">
+                        <h2 style="color:#f40b0b;">Paid Deliveries</h2>
+                        <br />
+                        <div class="quickview-peragraph">
+                            <p><b>Delhi/NCR:</b></p>
+                            <br />
+                            <p>1. Upto 3 kms free of cost delivery.</p>
+                            <p>2. Delhi Rs.200.</p>
+                            <p>3. NCR Rs 300/400.</p>
+                        </div>
+                        <br />
+                        <div class="quickview-peragraph">
+                            <p><b>Other States:</b></p>
+                            <br />
+                            <p>1. We can ship only upon full payment.</p>
+                            <p>2. Video showcase of packing will be shared.</p>
+                            <p>3. Tracking ID will be provided.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+
+    <footer class="footer">
+        <!-- Footer Top -->
+        <div class="footer-top section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer about">
+                            <div class="logo">
+                                <a href="Home.aspx">
+                                    <img src="images/whitelogo.PNG" alt="#"></a>
+                            </div>
+                            <p class="text">At i'Xclusive we believe in delivering Quality. Transparency in dealing, Details matters to us!</p>
+                            <p class="text">We always wanted to create a platform where a user can buy a new or preowned less used gadget with full assurance of its authenticity and reliability.</p>
+                            <p class="call">Got a Question? Call us on Tuesday-Sunday<span style="color:#f40b0b">Week off: Monday</span>
+                                <span><a href="tel:9999193931">+91 9999193931</a></span></p>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer links">
+                            <h4>Information</h4>
+                            <ul>
+
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        
+                        <!-- End Single Widget -->
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <!-- Single Widget -->
+                        <div class="single-footer social">
+                            <h4>Address:</h4>
+                            <!-- Single Widget -->
+                            <div class="contact">
+                                <ul>
+                                    <li>A-33, New Moti Nagar</li>
+                                    <li>New Delhi-110015,India</li>
+                                    <li>ishaan.vij@ixclusivedelhi.com</li>
+                                    <li>+91 9999193931</li>
+                                </ul>
+                            </div>
+                            <!-- End Single Widget -->
+                            <ul>
+                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                
+                                <li><a href="#"><i class="ti-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- End Single Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Footer Top -->
+        <div class="copyright">
+            <div class="container">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="left">
+                                <p>Copyright © 2020 <a href="#" target="_blank">iXclusiveDelhi</a>  -  All Rights Reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="right">
+                                <img src="images/payments.png" alt="#">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Jquery -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.0.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Popper JS -->
+    <script src="js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Color JS -->
+    
+    <!-- Slicknav JS -->
+    <script src="js/slicknav.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="js/owl-carousel.js"></script>
+    <!-- Magnific Popup JS -->
+    <script src="js/magnific-popup.js"></script>
+    <!-- Waypoints JS -->
+    
+    <!-- Countdown JS -->
+    
+    <!-- Nice Select JS -->
+    <script src="js/nicesellect.js"></script>
+    <!-- Flex Slider JS -->
+    
+    <!-- ScrollUp JS -->
+    <script src="js/scrollup.js"></script>
+    <!-- Onepage Nav JS -->
+    
+    <!-- Easing JS -->
+    <script src="js/easing.js"></script>
+    <!-- Active JS -->
+    <script src="js/active11.js"></script>
+
+    <script type="text/javascript">
+
+        function ShowPopup() {
+            $("#DeliveryModal").modal("show");
+        }
+
+    </script>
+</body>
+</html>
+
